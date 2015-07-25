@@ -35,11 +35,13 @@
   (define-key helm-map (kbd "M-? C-d") 'helm-debug-output)
   (define-key helm-map (kbd "M-? h") 'helm-help)
 
-  (define-key helm-find-files-map (kbd "~") (lambda ()
-                                              (interactive)
-                                              (if (looking-back "/")
-                                                  (insert "~/")
-                                                (call-interactively 'self-insert-command)))))
+  (add-hook 'helm-find-files-after-init-hook
+            (lambda ()
+              (define-key helm-find-files-map (kbd "~") (lambda ()
+                                                          (interactive)
+                                                          (if (looking-back "/")
+                                                              (insert "~/")
+                                                            (call-interactively 'self-insert-command)))))))
 
 (provide 'helm-pack)
 ;;; helm-pack.el ends here
