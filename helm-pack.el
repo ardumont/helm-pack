@@ -28,10 +28,18 @@
   :config
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-x b") 'helm-buffers-list)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
   (define-key helm-map (kbd "C-h") 'delete-backward-char)
   (define-key helm-map (kbd "C-d") 'delete-forward-char)
   (define-key helm-map (kbd "M-? C-d") 'helm-debug-output)
-  (define-key helm-map (kbd "M-? h") 'helm-help))
+  (define-key helm-map (kbd "M-? h") 'helm-help)
+
+  (define-key helm-find-files-map (kbd "~") (lambda ()
+                                              (interactive)
+                                              (if (looking-back "/")
+                                                  (insert "~/")
+                                                (call-interactively 'self-insert-command)))))
 
 (provide 'helm-pack)
 ;;; helm-pack.el ends here
