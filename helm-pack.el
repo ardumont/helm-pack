@@ -25,15 +25,15 @@
 ;;; Code:
 
 (use-package helm
-  :bind (("C-h" . delete-backward-char)
-         ("C-d" . delete-forward-char)
-         ("M-? C-d" . helm-debug-output)
-         ("M-? h" . helm-help))
-
   :config
   (global-set-key (kbd "M-x") 'helm-M-x)
   (global-set-key (kbd "C-x b") 'helm-buffers-list)
   (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+  (define-key helm-map (kbd "C-h") 'delete-backward-char)
+  (define-key helm-map (kbd "C-d") 'delete-forward-char)
+  (define-key helm-map (kbd "M-? C-d") 'helm-debug-output)
+  (define-key helm-map (kbd "M-? h") 'helm-help)
 
   (add-hook 'helm-find-files-after-init-hook
             (lambda ()
