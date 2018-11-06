@@ -34,13 +34,21 @@
 (define-key helm-map (kbd "M-? C-d") 'helm-debug-output)
 (define-key helm-map (kbd "M-? h") 'helm-help)
 
-(add-hook 'helm-find-files-after-init-hook
-	  (lambda ()
-	    (define-key helm-find-files-map (kbd "~") (lambda ()
-							(interactive)
-							(if (looking-back "/")
-							    (insert "~/")
-							  (call-interactively 'self-insert-command))))))
+(add-to-list 'display-buffer-alist
+	     `(,(rx bos "*helm" (* not-newline) "*" eos)
+	       (display-buffer-in-side-window)
+	       (inhibit-same-window . t)
+	       (window-height . 0.3)))
+
+(custom-set-variables '(helm-display-header-line nil))
+
+(helm-add-hook 'helm-find-files-after-init-hook
+	       (lambda ()
+		 (define-key helm-find-files-map (kbd "~") (lambda ()
+							     (interactive)
+							     (if (looking-back "/")
+								 (insert "~/")
+							       (call-interactively 'self-insert-command))))))
 
 (provide 'helm-pack)
 ;;; helm-pack.el ends here
