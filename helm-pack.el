@@ -33,6 +33,7 @@
 (define-key helm-map (kbd "C-d") 'delete-forward-char)
 (define-key helm-map (kbd "M-? C-d") 'helm-debug-output)
 (define-key helm-map (kbd "M-? h") 'helm-help)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 (add-to-list 'display-buffer-alist
 	     `(,(rx bos "*helm" (* not-newline) "*" eos)
