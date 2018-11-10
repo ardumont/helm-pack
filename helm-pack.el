@@ -1,6 +1,6 @@
-;;; helm-pack.el ---                                 -*- lexical-binding: t; -*-
+;;; helm-pack.el --- Helm default bindings
 
-;; Copyright (C) 2015  ardumont
+;; Copyright (C) 2015-2018  Antoine R. Dumont (@ardumont)
 
 ;; Author: ardumont <eniotna.t@gmail.com>
 ;; Keywords:
@@ -19,8 +19,6 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-
-;;
 
 ;;; Code:
 
